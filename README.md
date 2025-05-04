@@ -1,5 +1,9 @@
 # 🚀 Figma MCP Server + Augment Code Integration
 
+![GitHub license](https://img.shields.io/github/license/shedytee/mcp-figma-augmentcode-integration)
+![GitHub issues](https://img.shields.io/github/issues/shedytee/mcp-figma-augmentcode-integration)
+![GitHub stars](https://img.shields.io/github/stars/shedytee/mcp-figma-augmentcode-integration?style=social)
+
 This project shows how to connect a [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server to the [Figma API](https://www.figma.com/developers/api) and integrate it with [Augment Code](https://www.augmentcode.com/) to supercharge your development workflow.
 
 ---
@@ -149,6 +153,8 @@ See [`troubleshooting.md`](./troubleshooting.md) for common issues and fixes.
 
 Got ideas, improvements, or questions?  
 Please open an [issue](https://github.com/shedytee/mcp-figma-augmentcode-integration/issues) or submit a pull request — contributions are welcome!
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for guidelines.
 
 ---
 
