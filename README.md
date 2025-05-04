@@ -91,6 +91,18 @@ Examples:
 
 ---
 
+## 🗂 Example Code
+
+This repo includes [`figma-mcp-server.js`](./figma-mcp-server.js),  
+a working example of the MCP server wired to the Figma API.
+
+To run:
+```bash
+npm run start:mcp
+```
+
+---
+
 ## ⚠ Important Notes
 
 ### 🛡️ Watch for directory names with spaces
