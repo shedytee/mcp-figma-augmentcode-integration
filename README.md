@@ -1,102 +1,153 @@
-Figma MCP Server + Augment Code Integration
+# 🚀 Figma MCP Server + Augment Code Integration
 
-This project shows how to connect a Model Context Protocol (MCP) server to the Figma API and integrate it with Augment Code to expand your development workflow.
+This project shows how to connect a [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server to the [Figma API](https://www.figma.com/developers/api) and integrate it with [Augment Code](https://www.augmentcode.com/) to supercharge your development workflow.
 
-🚀 What It Does
+---
 
-✅ Builds an MCP server that can:
-Query Figma files
-Expose Figma data through an MCP-compatible interface
-Integrate into Augment Code as a custom tool
+## ✨ Features
+
+✅ Builds an MCP server that:
+- Queries Figma files  
+- Exposes Figma data to an MCP-compatible interface  
+- Integrates directly into Augment Code as a custom tool
 
 ✅ Uses:
-@modelcontextprotocol/sdk
-figma-js
-zod
-dotenv
+- [`@modelcontextprotocol/sdk`](https://github.com/modelcontextprotocol/typescript-sdk)  
+- [`figma-js`](https://github.com/jongold/figma-js)  
+- [`zod`](https://github.com/colinhacks/zod)  
+- [`dotenv`](https://github.com/motdotla/dotenv)
 
-⚙ Setup Instructions
+---
 
-1. Clone the repo
+## 📦 Setup Instructions
 
-git clone https://github.com/yourusername/figma-mcp-augmentcode-integration.git
-cd figma-mcp-augmentcode-integration
+1. **Clone the repository**
 
-2. Install dependencies
+   ```bash
+   git clone https://github.com/shedytee/mcp-figma-augmentcode-integration.git
+   cd mcp-figma-augmentcode-integration
+   ```
 
-npm install
+2. **Install dependencies**
 
-3. Create a .env file
+   ```bash
+   npm install
+   ```
 
-cp .env.example .env
+3. **Configure environment variables**
 
-Fill in:
+   Copy the example file and fill in your values:
 
-FIGMA_TOKEN → your Figma API token
-FIGMA_FILE_ID → your Figma file ID
-MCP_PORT → usually 3000
+   ```bash
+   cp .env.example .env
+   ```
 
-4. Run the server
+   Set:
+   - `FIGMA_TOKEN` → your Figma API token  
+   - `FIGMA_FILE_ID` → your Figma file ID  
+   - `MCP_PORT` → usually `3000`
 
-npm run start:mcp
+4. **Run the MCP server**
 
-🔗 Connect to Augment Code
+   ```bash
+   npm run start:mcp
+   ```
 
-Go to Augment Code → Workspace Settings → MCP
+   You should see:
+   ```
+   MCP Server running on port 3000
+   ```
 
-Add a new MCP server:
+---
 
-   Name: figma
-   Command:
+## ⚙️ Connect to Augment Code
 
-          node "C:/path/to/your/project/figma-mcp-server.js"
+1. Open **Augment Code → Workspace Settings → MCP**  
+2. Add a new MCP server:
+   - **Name:** `figma`
+   - **Command:**  
+     ```
+     node "C:/path/to/your/project/figma-mcp-server.js"
+     ```
 
-Add environment variables in Augment Code:
+3. Add environment variables in Augment Code:
+   - `FIGMA_TOKEN`
+   - `FIGMA_FILE_ID`
+   - `MCP_PORT`
 
-   FIGMA_TOKEN
-   FIGMA_FILE_ID
-   MCP_PORT
+4. Restart Augment Code to apply the changes.
 
-Restart Augment Code.
+---
 
-💬 Sample Prompts
+## 💬 Example Prompts
 
-See prompts.md for ready-to-use chat prompts to test your setup.
+See [`prompts.md`](./prompts.md) for ready-to-use chat prompts.
 
-⚠ Common Gotchas
+Examples:
+- Ask figma to get the full file data.
+- Use figma to fetch the latest file from the Figma API.
+- Ask figma for details about the component named `ButtonPrimary`.
+- Use the figma tool to show all components in the design file.
 
-See troubleshooting.md for common errors and fixes.
+---
 
-⚠ Important: Watch for directory names with spaces
+## ⚠ Important Notes
 
-If your project directory contains spaces (like Moments Platform),
-you must wrap the full script path in quotes inside the Augment Code Command box:
+### 🛡️ Watch for directory names with spaces
 
+If your project directory contains spaces (like `Moments Platform`),  
+you **must wrap the script path in quotes** in the Augment Code command:
+```
 node "C:/Users/yourname/Documents/Dev/Moments Platform/moments-platform/figma-mcp-server.js"
+```
 
-✅ Even better → move the project to a no-space folder:
-
+✅ Recommended → move to a no-space path:
+```
 C:/Users/yourname/Documents/Dev/MomentsPlatform/moments-platform/
+```
 
 Then use:
-
+```
 node C:/Users/yourname/Documents/Dev/MomentsPlatform/moments-platform/figma-mcp-server.js
+```
 
-❤️ Feedback and Contributions
+---
 
-Got ideas, improvements, or questions?
-Please open an issue or pull request — contributions are welcome!
+### 🔧 Troubleshooting
 
-📄 License
+See [`troubleshooting.md`](./troubleshooting.md) for common issues and fixes.
 
-MIT
+---
 
+## 🛠 Repository Structure
 
-✅ If you want, I can also prep a:
-GitHub Actions CI template**
-CONTRIBUTING.md**
-Social media post draft to announce the repo**
+```
+/README.md            → Main guide  
+/.env.example         → Example environment config  
+/figma-mcp-server.js → MCP server code  
+/prompts.md          → Sample prompts for Augment Code  
+/troubleshooting.md  → Error guide  
+/package.json        → Dependencies and scripts  
+/LICENSE             → License
+```
 
-Just say: “Yes, prepare the next pack!” 🚀
+---
 
-          
+## 🤝 Contributing
+
+Got ideas, improvements, or questions?  
+Please open an [issue](https://github.com/shedytee/mcp-figma-augmentcode-integration/issues) or submit a pull request — contributions are welcome!
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](./LICENSE).
+
+---
+
+## 🌐 Links
+
+- [Model Context Protocol (MCP)](https://modelcontextprotocol.io)  
+- [Figma API](https://www.figma.com/developers/api)  
+- [Augment Code](https://www.augmentcode.com/)
