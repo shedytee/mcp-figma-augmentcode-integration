@@ -71,7 +71,7 @@ This project shows how to connect a [Model Context Protocol (MCP)](https://model
    - **Name:** `figma`
    - **Command:**  
      ```
-     node "C:/path/to/your/project/figma-mcp-server.js"
+     node C:/path/to/your/project/figma-mcp-server.js
      ```
 
 3. Add environment variables in Augment Code:
@@ -111,20 +111,20 @@ npm run start:mcp
 
 ### 🛡️ Watch for directory names with spaces
 
-If your project directory contains spaces (like `Moments Platform`),  
+If your project directory contains spaces (like `ZZZZ Platform`),  
 you **must wrap the script path in quotes** in the Augment Code command:
 ```
-node "C:/Users/yourname/Documents/Dev/Moments Platform/moments-platform/figma-mcp-server.js"
+node "C:/Users/yourname/Documents/Dev/ZZZZ Platform/zzzz-platform/figma-mcp-server.js"
 ```
 
 ✅ Recommended → move to a no-space path:
 ```
-C:/Users/yourname/Documents/Dev/MomentsPlatform/moments-platform/
+C:/Users/yourname/Documents/Dev/ZZZZPlatform/zzzz-platform/
 ```
 
 Then use:
 ```
-node C:/Users/yourname/Documents/Dev/MomentsPlatform/moments-platform/figma-mcp-server.js
+node C:/Users/yourname/Documents/Dev/ZZZZPlatform/zzzz-platform/figma-mcp-server.js
 ```
 
 ---
