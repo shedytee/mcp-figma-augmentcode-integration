@@ -10,12 +10,12 @@ This project shows how to connect a [Model Context Protocol (MCP)](https://model
 
 ## ✨ Features
 
-✅ Builds an MCP server that:
+✅ Builds an MCP server that:  
 - Queries Figma files  
 - Exposes Figma data to an MCP-compatible interface  
-- Integrates directly into Augment Code as a custom tool
+- Integrates into Augment Code as a custom tool
 
-✅ Uses:
+✅ Uses:  
 - [`@modelcontextprotocol/sdk`](https://github.com/modelcontextprotocol/typescript-sdk)  
 - [`figma-js`](https://github.com/jongold/figma-js)  
 - [`zod`](https://github.com/colinhacks/zod)  
@@ -34,24 +34,54 @@ This project shows how to connect a [Model Context Protocol (MCP)](https://model
 
 2. **Install dependencies**
 
+   Install the required NPM packages:
    ```bash
-   npm install
+   npm install @modelcontextprotocol/sdk figma-js zod dotenv
    ```
 
 3. **Configure environment variables**
-
-   Copy the example file and fill in your values:
 
    ```bash
    cp .env.example .env
    ```
 
-   Set:
+   Fill in:
    - `FIGMA_TOKEN` → your Figma API token  
    - `FIGMA_FILE_ID` → your Figma file ID  
    - `MCP_PORT` → usually `3000`
 
-4. **Run the MCP server**
+4. **Update `package.json`**
+
+   In your `package.json`, add `"type": "module"` at the top level and a `start:mcp` script under `"scripts"`:
+
+   ```diff
+   {
+     "name": "mcp-figma-augmentcode-integration",
+     "version": "1.0.0",
+   + "type": "module",
+     "scripts": {
+       "start:mcp": "node figma-mcp-server.js"
+     },
+     "dependencies": {
+       "@modelcontextprotocol/sdk": "^1.17.1",
+       "figma-js": "^1.16.1-0",
+       "zod": "^3.25.76",
+       "dotenv": "^17.2.1"
+     }
+   }
+   ```
+
+5. **Add startup log to `figma-mcp-server.js`**
+
+   Ensure your script ends with a console message so you see startup success. For example, after connecting:
+
+   ```diff
+   const transport = new StdioServerTransport();
+   await server.connect(transport);
+   + console.log(`MCP Server running on port ${MCP_PORT}`);
+   ```
+
+6. **Run the MCP server**
 
    ```bash
    npm run start:mcp
@@ -71,36 +101,41 @@ This project shows how to connect a [Model Context Protocol (MCP)](https://model
    - **Name:** `figma`
    - **Command:**  
      ```
-     node C:/path/to/your/project/figma-mcp-server.js
+     node figma-mcp-server.js
      ```
+     (runs from your workspace root)
 
-3. Add environment variables in Augment Code:
+3. Under **Environment Variables**, add:
    - `FIGMA_TOKEN`
    - `FIGMA_FILE_ID`
    - `MCP_PORT`
 
-4. Restart Augment Code to apply the changes.
+4. **Save** and **toggle ON** the “figma” server.  
+   Look for this in the logs:
+   ```
+   [dotenv@…] injecting env …
+   MCP Server running on port 3000
+   ```
+   Once you see it, the icon will turn green.
 
 ---
 
 ## 💬 Example Prompts
 
-See [`prompts.md`](./prompts.md) for ready-to-use chat prompts.
+See [`prompts.md`](./prompts.md) for ready-to-use chat prompts. Examples:
 
-Examples:
-- Ask figma to get the full file data.
-- Use figma to fetch the latest file from the Figma API.
-- Ask figma for details about the component named `ButtonPrimary`.
+- Ask figma to get the full file data.  
+- Use figma to fetch the latest file from the Figma API.  
+- Ask figma for details about the component named `ButtonPrimary`.  
 - Use the figma tool to show all components in the design file.
 
 ---
 
 ## 🗂 Example Code
 
-This repo includes [`figma-mcp-server.js`](./figma-mcp-server.js),  
-a working example of the MCP server wired to the Figma API.
+This repo includes [`figma-mcp-server.js`](./figma-mcp-server.js), a working example of the MCP server wired to the Figma API.
 
-To run:
+To run locally:
 ```bash
 npm run start:mcp
 ```
@@ -109,22 +144,19 @@ npm run start:mcp
 
 ## ⚠ Important Notes
 
-### 🛡️ Watch for directory names with spaces
+### 🛡️ Directories with spaces
 
-If your project directory contains spaces (like `ZZZZ Platform`),  
-you **must wrap the script path in quotes** in the Augment Code command:
-```
-node "C:/Users/yourname/Documents/Dev/ZZZZ Platform/zzzz-platform/figma-mcp-server.js"
-```
+If your **workspace path** includes spaces (e.g. `My Projects`), wrap the command argument in quotes:
 
-✅ Recommended → move to a no-space path:
-```
-C:/Users/yourname/Documents/Dev/ZZZZPlatform/zzzz-platform/
+```text
+node "figma-mcp-server.js"
 ```
 
-Then use:
+—or—  
+Move your project to a path without spaces to avoid quoting:
+
 ```
-node C:/Users/yourname/Documents/Dev/ZZZZPlatform/zzzz-platform/figma-mcp-server.js
+C:/Users/yourname/Dev/NoSpacesRepo/
 ```
 
 ---
@@ -132,20 +164,6 @@ node C:/Users/yourname/Documents/Dev/ZZZZPlatform/zzzz-platform/figma-mcp-server
 ### 🔧 Troubleshooting
 
 See [`troubleshooting.md`](./troubleshooting.md) for common issues and fixes.
-
----
-
-## 🛠 Repository Structure
-
-```
-/README.md            → Main guide  
-/.env.example         → Example environment config  
-/figma-mcp-server.js → MCP server code  
-/prompts.md          → Sample prompts for Augment Code  
-/troubleshooting.md  → Error guide  
-/package.json        → Dependencies and scripts  
-/LICENSE             → License
-```
 
 ---
 
