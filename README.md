@@ -1,6 +1,6 @@
 # 🚀 Figma MCP Server + Augment Code Integration
-**Easier option now available here: https://github.com/shedytee/Figma-MCP-Augment-Code-Guide-Local-HTTP-mode-/blob/main/README.md
-**
+Easier option now available here: https://github.com/shedytee/Figma-MCP-Augment-Code-Guide-Local-HTTP-mode-/blob/main/README.md
+
 ![GitHub license](https://img.shields.io/github/license/shedytee/mcp-figma-augmentcode-integration)
 ![GitHub issues](https://img.shields.io/github/issues/shedytee/mcp-figma-augmentcode-integration)
 ![GitHub stars](https://img.shields.io/github/stars/shedytee/mcp-figma-augmentcode-integration?style=social)
